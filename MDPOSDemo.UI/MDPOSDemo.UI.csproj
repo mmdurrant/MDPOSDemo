@@ -194,6 +194,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\LoginControl.cshtml" />
+    <Content Include="Views\Shared\LoginError.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\POSApp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -209,6 +212,14 @@
     <ProjectReference Include="..\MDPOSDemo.BIZ\MDPOSDemo.BIZ.csproj">
       <Project>{C90FF3B2-F33B-42C3-BE07-16A5F461FF4C}</Project>
       <Name>MDPOSDemo.BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.CC\MDPOSDemo.CC.csproj">
+      <Project>{8EF69082-5EBB-4AAE-B0E6-5038CD7791E9}</Project>
+      <Name>MDPOSDemo.CC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.Model\MDPOSDemo.Model.csproj">
+      <Project>{D518D554-8AC9-4EAC-9917-AF590433CFAA}</Project>
+      <Name>MDPOSDemo.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

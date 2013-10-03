@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MDPOSDemo.CC.Error>
+@{
+    if (Model.Any())
+    {
+    <div class="errorList">
+        <ul class="errorItem">
+            @foreach (var error in Model)
+            {
+                <li>@error.Message</li>
+            }
+        </ul>
+    </div>
+    }
+}

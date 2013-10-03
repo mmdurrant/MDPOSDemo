@@ -1,0 +1,8 @@
+﻿@using MDPOSDemo.UI.Models
+@model MDPOSDemo.UI.Models.LoginRequestModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+@Html.Partial("LoginControl", Model ?? new LoginRequestModel())

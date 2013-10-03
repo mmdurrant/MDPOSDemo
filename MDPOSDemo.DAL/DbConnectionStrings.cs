@@ -25,7 +25,7 @@ namespace MDPOSDemo.DAL
             }
             else
             {
-                throw new Exception(string.Format("Could not get exception string {0}", name));
+                throw new Exception(string.Format("Could not get connection string {0}", name));
             }
 
             return result;

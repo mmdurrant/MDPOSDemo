@@ -1,4 +1,19 @@
 ﻿@model MDPOSDemo.UI.Models.LoginRequestModel
 
-@Html.TextBoxFor(x => x.Username)
-@Html.PasswordFor(x => x.Password)
+@Html.BeginForm("Login", "Home")
+<div>
+    <span>@Html.LabelFor(x => x.Username)</span>
+    <span>@Html.TextBoxFor(x => x.Username)</span>
+</div>
+<div>
+    <span>@Html.LabelFor(x => x.Password)</span>
+    <span>@Html.PasswordFor(x => x.Password)</span>
+</div>
+<div>
+    <input type="submit"/>
+</div>
+
+@{
+    Html.EndForm();
+}
+@Html.Partial("LoginError", Model.Errors)
