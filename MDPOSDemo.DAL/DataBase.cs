@@ -58,7 +58,7 @@ namespace MDPOSDemo.DAL
                 }
                 catch (SqlException sqlException)
                 {
-                    result.AddError("Error executing database statement {0}", sql);
+                    result.AddError("Error executing database statement {0}", sqlException.Message);
                 }
                 catch (Exception e)
                 {

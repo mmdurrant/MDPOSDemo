@@ -34,6 +34,7 @@
       <HintPath>..\packages\Dapper.1.13\lib\net45\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
+    <Compile Include="DbConnectionStrings.cs" />
     <Compile Include="Factories\DbConnectionFactory.cs" />
     <Compile Include="LoginData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
