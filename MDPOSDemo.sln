@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDPOSDemo.CC", "MDPOSDemo.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDPOSDemo.Model", "MDPOSDemo.Model\MDPOSDemo.Model.csproj", "{D518D554-8AC9-4EAC-9917-AF590433CFAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDPOSDemo.CC_Tests", "MDPOSDemo.CC_Tests\MDPOSDemo.CC_Tests.csproj", "{D9524A40-9082-4C3C-8FF9-0DBFEBA67280}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{D518D554-8AC9-4EAC-9917-AF590433CFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D518D554-8AC9-4EAC-9917-AF590433CFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D518D554-8AC9-4EAC-9917-AF590433CFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9524A40-9082-4C3C-8FF9-0DBFEBA67280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9524A40-9082-4C3C-8FF9-0DBFEBA67280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9524A40-9082-4C3C-8FF9-0DBFEBA67280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9524A40-9082-4C3C-8FF9-0DBFEBA67280}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

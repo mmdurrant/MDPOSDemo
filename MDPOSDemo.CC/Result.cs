@@ -33,6 +33,7 @@ namespace MDPOSDemo.CC
             var error = new Error();
             var message = string.Format(format, paramsObjects);
             error.Message = message;
+            Errors.Add(error);
         }
 
     }
