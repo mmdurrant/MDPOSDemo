@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C90FF3B2-F33B-42C3-BE07-16A5F461FF4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MDPOSDemo.BIZ</RootNamespace>
+    <AssemblyName>MDPOSDemo.BIZ</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LoginBiz.cs" />
+    <Compile Include="Factories\DALFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MDPOSDemo.BIZ.Contracts\MDPOSDemo.BIZ.Contracts.csproj">
+      <Project>{23B589E5-4A9B-45C8-BC57-451AEFBF27A9}</Project>
+      <Name>MDPOSDemo.BIZ.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.CC\MDPOSDemo.CC.csproj">
+      <Project>{8EF69082-5EBB-4AAE-B0E6-5038CD7791E9}</Project>
+      <Name>MDPOSDemo.CC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.DAL.Contracts\MDPOSDemo.DAL.Contracts.csproj">
+      <Project>{A9141C6B-3173-4679-B3A6-2B49A73D693E}</Project>
+      <Name>MDPOSDemo.DAL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.DAL\MDPOSDemo.DAL.csproj">
+      <Project>{B7D55E58-D980-439C-992F-246244C89747}</Project>
+      <Name>MDPOSDemo.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.Model\MDPOSDemo.Model.csproj">
+      <Project>{D518D554-8AC9-4EAC-9917-AF590433CFAA}</Project>
+      <Name>MDPOSDemo.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
