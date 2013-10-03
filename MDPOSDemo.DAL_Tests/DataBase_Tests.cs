@@ -13,6 +13,10 @@ namespace MDPOSDemo.DAL_Tests
     public class DataBase_Tests
     {
         [SetUp]
+        public void SetUp()
+        {
+            
+        }
 
         private class TestData : DataBase, ITestData
         {
@@ -26,6 +30,8 @@ namespace MDPOSDemo.DAL_Tests
                 {
                     result.Value = dbResult.Value.FirstOrDefault();
                 }
+
+                return result;
             }
         }
         private interface ITestData
