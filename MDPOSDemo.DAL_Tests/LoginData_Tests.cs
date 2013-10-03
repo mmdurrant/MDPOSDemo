@@ -20,12 +20,42 @@ namespace MDPOSDemo.DAL_Tests
             _target = new LoginData();
         }
 
-        [Test]
-        public void Login_ReturnsResultWhenUserExists_Test()
+        [TestCase("TestUser1", "3212886E-192F-4DD5-90C2-6358191C4FD3")]
+        public void Login_ReturnsNameForAuthentication_Test(string userName, string authToken)
         {
-            var actual = _target.Login(new LoginRequest());
+            var request = BuildLoginRequest(userName, authToken);
+            var actual = _target.Login(request);
+            Assert.AreEqual(request.Name, actual.Value.Name);
         }
 
-        
+        [TestCase("TestUser1", "3212886E-192F-4DD5-90C2-6358191C4FD3")]
+        public void Login_ReturnsMerchantKeyForAuthentication_Test(string userMerchantKey, string authToken)
+        {
+            var request = BuildLoginRequest(userMerchantKey, authToken);
+            var actual = _target.Login(request);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(actual.Value.MerchantKey));
+        }
+
+        [TestCase("TestUser1", "3212886E-192F-4DD5-90C2-6358191C4FD3")]
+        public void Login_ReturnsMerchantNameNameForAuthentication_Test(string userName, string authToken)
+        {
+            var request = BuildLoginRequest(userName, authToken);
+            var actual = _target.Login(request);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(actual.Value.MerchantName));
+        }
+
+        [TestCase("TestUser1", "BADPASSWORD")]
+        public void Login_ReturnsErrorForFailedAuthentication_Test(string username, string authToken)
+        {
+            var request = BuildLoginRequest(username, authToken);
+            var actual = _target.Login(request);
+            Assert.IsTrue(actual.Errors.Any());
+        }
+
+
+        private LoginRequest BuildLoginRequest(string username, string password)
+        {
+            return new LoginRequest() {Name = username, Password = password};
+        }
     }
 }

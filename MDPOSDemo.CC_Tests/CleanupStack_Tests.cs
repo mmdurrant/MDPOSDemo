@@ -14,6 +14,7 @@ namespace MDPOSDemo.CC_Tests
     {
         private CleanupStack _cleanupStack;
         private int callCount = 0;
+
         [SetUp]
         public void CleanupStack()
         {
