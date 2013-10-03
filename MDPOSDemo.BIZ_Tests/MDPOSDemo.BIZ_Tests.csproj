@@ -11,6 +11,8 @@
     <AssemblyName>MDPOSDemo.BIZ_Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.1.1309.1617\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,9 +47,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginBiz_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MDPOSDemo.BIZ.Contracts\MDPOSDemo.BIZ.Contracts.csproj">
+      <Project>{23B589E5-4A9B-45C8-BC57-451AEFBF27A9}</Project>
+      <Name>MDPOSDemo.BIZ.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.BIZ\MDPOSDemo.BIZ.csproj">
+      <Project>{C90FF3B2-F33B-42C3-BE07-16A5F461FF4C}</Project>
+      <Name>MDPOSDemo.BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.CC\MDPOSDemo.CC.csproj">
+      <Project>{8EF69082-5EBB-4AAE-B0E6-5038CD7791E9}</Project>
+      <Name>MDPOSDemo.CC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.DAL.Contracts\MDPOSDemo.DAL.Contracts.csproj">
+      <Project>{A9141C6B-3173-4679-B3A6-2B49A73D693E}</Project>
+      <Name>MDPOSDemo.DAL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.Model\MDPOSDemo.Model.csproj">
+      <Project>{D518D554-8AC9-4EAC-9917-AF590433CFAA}</Project>
+      <Name>MDPOSDemo.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

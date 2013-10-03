@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MDPOSDemo.BIZ.Contracts;
 using MDPOSDemo.CC;
+using MDPOSDemo.DAL;
 using MDPOSDemo.DAL.Contracts;
 using MDPOSDemo.Model;
 
@@ -21,7 +22,7 @@ namespace MDPOSDemo.BIZ
 
         public Result<LoginResult> Login(LoginRequest loginRequest)
         {
-            throw new NotImplementedException();
+            return LoginDataInterface.Login(loginRequest);
         }
     }
 }
