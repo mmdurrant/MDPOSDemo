@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Factories\BIZFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,14 +192,24 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\LoginControl.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\LoginControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MDPOSDemo.BIZ.Contracts\MDPOSDemo.BIZ.Contracts.csproj">
+      <Project>{23B589E5-4A9B-45C8-BC57-451AEFBF27A9}</Project>
+      <Name>MDPOSDemo.BIZ.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.BIZ\MDPOSDemo.BIZ.csproj">
+      <Project>{C90FF3B2-F33B-42C3-BE07-16A5F461FF4C}</Project>
+      <Name>MDPOSDemo.BIZ</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
