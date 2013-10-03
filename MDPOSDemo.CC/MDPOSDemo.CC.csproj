@@ -39,7 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CleanupStack.cs" />
+    <Compile Include="Extenders\CleanupStackExtenders.cs" />
+    <Compile Include="Extenders\ErrorExtenders.cs" />
     <Compile Include="Extenders\ResultExtenders.cs" />
+    <Compile Include="ICleanupStack.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Error.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

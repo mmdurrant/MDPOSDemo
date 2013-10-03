@@ -10,6 +10,6 @@ namespace MDPOSDemo.Contracts
 {
     public interface ILoginData
     {
-        Result<bool> Login(LoginRequest request);
+        Result<LoginResult> Login(LoginRequest request);
     }
 }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase_Tests.cs" />
+    <Compile Include="Extenders\LoginExtender_Tests.cs" />
     <Compile Include="LoginData_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,6 +69,10 @@
     <ProjectReference Include="..\MDPOSDemo.DAL\MDPOSDemo.DAL.csproj">
       <Project>{B7D55E58-D980-439C-992F-246244C89747}</Project>
       <Name>MDPOSDemo.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MDPOSDemo.Model\MDPOSDemo.Model.csproj">
+      <Project>{D518D554-8AC9-4EAC-9917-AF590433CFAA}</Project>
+      <Name>MDPOSDemo.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
