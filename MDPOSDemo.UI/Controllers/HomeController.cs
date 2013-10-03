@@ -36,7 +36,7 @@ namespace MDPOSDemo.UI.Controllers
                     return View("Login", new LoginRequestModel() {Errors = loginResult.Errors});
                 }
 
-                return View("POSApp");
+                return View("Index", "POSApp");
             }
             else
             {
@@ -52,7 +52,7 @@ namespace MDPOSDemo.UI.Controllers
             if (loginResult.IsValid)
             {
                 Session["UserSession"] = loginResult.Value.AsUserSession();
-                return View("POSApp");
+                return View("Index", "POSApp");
             }
             else
             {
