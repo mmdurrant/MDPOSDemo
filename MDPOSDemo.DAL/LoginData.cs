@@ -17,7 +17,7 @@ namespace MDPOSDemo.DAL
             result.Value = false;
 
             //TODO: Replace with actual code
-            var dbResult = Query<bool>()
+            //var dbResult = Query<bool>();
 
             return result;
         }
