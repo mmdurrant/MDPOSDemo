@@ -16,17 +16,8 @@ namespace MDPOSDemo.DAL
             var result = new Result<bool>();
             result.Value = false;
 
-
-
             //TODO: Replace with actual code
-            if (request.Name.Equals("testuser") && request.Password.Equals("password"))
-            {
-                result.Value = true;
-            }
-            else
-            {
-                result.AddError("The requested username/password was invalid.");
-            }
+            var dbResult = Query<bool>()
 
             return result;
         }
