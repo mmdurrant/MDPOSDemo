@@ -56,9 +56,9 @@
       <Project>{8EF69082-5EBB-4AAE-B0E6-5038CD7791E9}</Project>
       <Name>MDPOSDemo.CC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MDPOSDemo.Contracts\MDPOSDemo.Contracts.csproj">
-      <Project>{8BEB047D-15E6-4B0F-9019-4639BCCF1EC7}</Project>
-      <Name>MDPOSDemo.Contracts</Name>
+    <ProjectReference Include="..\MDPOSDemo.DAL.Contracts\MDPOSDemo.DAL.Contracts.csproj">
+      <Project>{A9141C6B-3173-4679-B3A6-2B49A73D693E}</Project>
+      <Name>MDPOSDemo.DAL.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\MDPOSDemo.Model\MDPOSDemo.Model.csproj">
       <Project>{D518D554-8AC9-4EAC-9917-AF590433CFAA}</Project>

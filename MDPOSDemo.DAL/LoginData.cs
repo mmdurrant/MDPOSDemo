@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MDPOSDemo.CC;
 using MDPOSDemo.CC.Extenders;
-using MDPOSDemo.Contracts;
+using MDPOSDemo.DAL.Contracts;
 using MDPOSDemo.DAL.Extenders;
 using MDPOSDemo.DAL.POCOs;
 using MDPOSDemo.Model;
