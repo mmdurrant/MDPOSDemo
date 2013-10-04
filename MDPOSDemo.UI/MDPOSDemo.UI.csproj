@@ -103,6 +103,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChargeModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -197,7 +198,8 @@
     <Content Include="Views\Shared\LoginControl.cshtml" />
     <Content Include="Views\Shared\LoginError.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\POSApp.cshtml" />
+    <Content Include="Views\POSApp\Index.cshtml" />
+    <Content Include="Views\POSApp\POSCharge.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

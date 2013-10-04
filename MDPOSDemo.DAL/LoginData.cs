@@ -32,9 +32,9 @@ namespace MDPOSDemo.DAL
                     MerchantKey,
                     ConfigurationID
                 FROM POSUser
-                WHERE Name = @name AND AuthenticationToken = @authToken", new { @name = request.Name, @authToken = request.Password });
+                WHERE Name = @name AND AuthenticationToken = @authToken", new { @name = request.Username, @authToken = request.Password });
 
-            result.AddErrors(dbResult.Errors);
+            result.Errors.Add(dbResult.Errors);
 
             if (result.IsValid && dbResult.Value.Any())
             {
@@ -42,7 +42,7 @@ namespace MDPOSDemo.DAL
             }
             else
             {
-                result.AddError("Could not authenticate user {0}", request.Name);
+                result.AddError("Could not authenticate user {0}", request.Username);
             }
             
             return result;

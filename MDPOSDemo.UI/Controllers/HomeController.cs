@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using MDPOSDemo.BIZ.Contracts;
 using MDPOSDemo.BIZ.Extenders;
 using MDPOSDemo.CC;
+using MDPOSDemo.CC.Extenders;
 using MDPOSDemo.Model;
 using MDPOSDemo.UI.Models;
 
@@ -36,7 +37,7 @@ namespace MDPOSDemo.UI.Controllers
                     return View("Login", new LoginRequestModel() {Errors = loginResult.Errors});
                 }
 
-                return View("Index", "POSApp");
+                return RedirectToAction("Index", "POSApp");
             }
             else
             {
@@ -52,10 +53,11 @@ namespace MDPOSDemo.UI.Controllers
             if (loginResult.IsValid)
             {
                 Session["UserSession"] = loginResult.Value.AsUserSession();
-                return View("Index", "POSApp");
+                return RedirectToAction("Index", "POSApp");
             }
             else
             {
+                model.Errors.Add(loginResult.Errors);
                 return View("Login", model);
             }
         }
@@ -64,7 +66,7 @@ namespace MDPOSDemo.UI.Controllers
         {
             return new LoginRequest()
             {
-                Name = model.Username,
+                Username = model.Username,
                 Password = model.Password
             };
         }

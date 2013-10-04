@@ -73,3 +73,14 @@ textarea
 {
     display: none;
 }
+
+/* MD POS App Demo */
+/* Errors */
+ul.errorList {
+    
+}
+
+.errorItem {
+    color: #ff0000;
+    list-style-type: none;
+}

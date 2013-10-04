@@ -35,7 +35,7 @@ namespace MDPOSDemo.BIZ_Tests
                     x.Login(
                         It.Is<LoginRequest>(
                             request =>
-                                request.Name.Equals("validuser", StringComparison.InvariantCulture) &&
+                                request.Username.Equals("validuser", StringComparison.InvariantCulture) &&
                                 request.Password.Equals("validpassword", StringComparison.InvariantCulture))))
                                 .Returns(_validLoginResult);
             
@@ -44,7 +44,7 @@ namespace MDPOSDemo.BIZ_Tests
                     x.Login(
                         It.Is<LoginRequest>(
                             request =>
-                                !request.Name.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) &&
+                                !request.Username.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) &&
                                 !request.Password.Equals(_validLoginPassword))))
                                 .Returns(_invalidLoginResult);
             
@@ -57,7 +57,7 @@ namespace MDPOSDemo.BIZ_Tests
             var request = BuildValidLoginRequest();
             var actual = _target.Login(request);
             Assert.IsTrue(actual.IsValid);
-            Assert.AreEqual(request.Name, actual.Value.Name);
+            Assert.AreEqual(request.Username, actual.Value.Name);
         }
 
         [Test]
@@ -86,7 +86,7 @@ namespace MDPOSDemo.BIZ_Tests
         {
             return new LoginRequest
             {
-                Name = Guid.NewGuid().ToString(),
+                Username = Guid.NewGuid().ToString(),
                 Password = Guid.NewGuid().ToString()
             };
         }
@@ -95,7 +95,7 @@ namespace MDPOSDemo.BIZ_Tests
         {
             return new LoginRequest()
             {
-                Name = _validLoginName,
+                Username = _validLoginName,
                 Password = _validLoginPassword
             };
         }

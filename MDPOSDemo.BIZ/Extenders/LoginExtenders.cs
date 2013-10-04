@@ -34,7 +34,7 @@ namespace MDPOSDemo.BIZ.Extenders
             {
                 result = new LoginRequest()
                 {
-                    Name = input.Name,
+                    Username = input.Name,
                     Password = input.Password,
                 };
             }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 using MDPOSDemo.BIZ.Contracts;
 using MDPOSDemo.BIZ.Extenders;
@@ -73,17 +71,42 @@ namespace MDPOSDemo.UI_Tests
         }
 
         [Test]
-        public void Index_RedirectsToAppIfSessionStateIsValid_Test()
+        public void Index_RedirectsToPOSAppControllerIndexViewIfSessionStateIsValid_Test()
         {
-            var expected = "POSApp";
+            const string expectedAction = "Index";
+            const string expectedController = "POSApp";
             var validLoginResult = BuildValidLoginResult();
             var userSession = validLoginResult.Value.AsUserSession();
             _builder.Session["UserSession"] = userSession;
-            var actual = _target.Index() as ViewResult;
-            Assert.AreEqual(expected, actual.ViewName);
+            var actual = _target.Index() as RedirectToRouteResult;
+            Assert.AreEqual(expectedAction, actual.RouteValues["Action"]);
+            Assert.AreEqual(expectedController, actual.RouteValues["Controller"]);
+        }
+
+        [Test]
+        public void Login_ReturnsErrors_Test()
+        {
+            const string expected = "Invalid login";
+            SetupBizForInvalidLogin();
+            var invalidLoginResult = BuildInvalidLoginResult();
+            var userSession = invalidLoginResult.Value.AsUserSession();
+            _builder.Session["UserSession"] = userSession;
+            var actual = _target.Login(new LoginRequestModel() {Username = "jlebowski", Password = "ILoveBunny"}) as ViewResult;
+            var model = actual.Model as LoginRequestModel;
+            Assert.IsTrue(model.Errors.Any(x => x.Message.Equals(expected, StringComparison.InvariantCulture)));
         }
 
         #region Helper methods
+
+        private LoginRequestModel BuildLoginRequestModelFromRequest(LoginRequest request)
+        {
+            var result = new LoginRequestModel();
+            result.Username = request.Username;
+            result.Password = request.Password;
+
+            return result;
+        }
+        
         private Result<LoginResult> BuildInvalidLoginResult()
         {
             return new Result<LoginResult>()
@@ -103,7 +126,7 @@ namespace MDPOSDemo.UI_Tests
         {
             return new LoginRequest()
             {
-                Name = _validLoginName,
+                Username = _validLoginName,
                 Password = _validLoginPassword
             };
         }
@@ -130,7 +153,7 @@ namespace MDPOSDemo.UI_Tests
                 x =>
                     x.Login(
                         It.Is<LoginRequest>(
-                            req => req.Name.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) && req.Password.Equals(_validLoginPassword))))
+                            req => req.Username.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) && req.Password.Equals(_validLoginPassword))))
                 .Returns(_validLoginResult);
 
         }
@@ -141,7 +164,7 @@ namespace MDPOSDemo.UI_Tests
                 x =>
                     x.Login(
                         It.Is<LoginRequest>(
-                            req => req == null || string.IsNullOrWhiteSpace(req.Name) || string.IsNullOrWhiteSpace(req.Password) || !req.Name.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) && !req.Password.Equals(_validLoginPassword))))
+                            req => req == null || string.IsNullOrWhiteSpace(req.Username) || string.IsNullOrWhiteSpace(req.Password) || !req.Username.Equals(_validLoginName, StringComparison.InvariantCultureIgnoreCase) && !req.Password.Equals(_validLoginPassword))))
                 .Returns(_invalidLoginResult);
 
         }

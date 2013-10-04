@@ -19,5 +19,13 @@ namespace MDPOSDemo.CC.Extenders
             var errorMessage = string.Format(formatString, parms);
             input.Add(errorMessage);
         }
+
+        public static void Add(this ICollection<Error> input, IEnumerable<Error> errors)
+        {
+            foreach (var error in errors)
+            {
+                input.Add(error);
+            }
+        }
     }
 }

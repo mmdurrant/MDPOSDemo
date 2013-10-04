@@ -1,6 +1,6 @@
 ﻿@model MDPOSDemo.UI.Models.LoginRequestModel
 
-@Html.BeginForm("Login", "Home")
+@using (Html.BeginForm("Login", "Home")) {
 <div>
     <span>@Html.LabelFor(x => x.Username)</span>
     <span>@Html.TextBoxFor(x => x.Username)</span>
@@ -12,8 +12,6 @@
 <div>
     <input type="submit"/>
 </div>
-
-@{
-    Html.EndForm();
 }
+
 @Html.Partial("LoginError", Model.Errors)
