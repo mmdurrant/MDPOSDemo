@@ -15,5 +15,10 @@ namespace MDPOSDemo.BIZ.Factories
         {
             return new LoginData();
         }
+
+        public static IMerchantData GetMerchantDataInterface()
+        {
+            return new MerchantData();
+        }
     }
 }

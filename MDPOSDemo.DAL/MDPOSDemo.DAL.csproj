@@ -50,6 +50,7 @@
     <Compile Include="Extenders\LoginExtenders.cs" />
     <Compile Include="Factories\DbConnectionFactory.cs" />
     <Compile Include="LoginData.cs" />
+    <Compile Include="MerchantData.cs" />
     <Compile Include="POCOs\POSUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

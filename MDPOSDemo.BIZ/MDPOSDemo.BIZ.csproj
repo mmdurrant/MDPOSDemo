@@ -42,6 +42,7 @@
     <Compile Include="Extenders\LoginExtenders.cs" />
     <Compile Include="LoginBiz.cs" />
     <Compile Include="Factories\DALFactory.cs" />
+    <Compile Include="MerchantBiz.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -53,6 +53,7 @@ namespace MDPOSDemo.DAL_Tests
         }
 
 
+
         private LoginRequest BuildLoginRequest(string username, string password)
         {
             return new LoginRequest() {Username = username, Password = password};

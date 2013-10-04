@@ -13,5 +13,10 @@ namespace MDPOSDemo.UI.Factories
         {
             return new LoginBiz();
         }
+
+        public static IMerchantBiz GetMerchantBiz()
+        {
+            return new MerchantBiz();
+        }
     }
 }

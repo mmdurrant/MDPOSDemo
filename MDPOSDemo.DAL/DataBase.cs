@@ -68,5 +68,36 @@ namespace MDPOSDemo.DAL
 
             return result;
         }
+
+        public Result<int> Execute(string sql, object param = null, IDbTransaction transaction = null, CommandType? commandType = null)
+        {
+            var result = new Result<int>();
+            using (var conn = DbConnectionFactory(ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    var dbResult = conn.Execute(sql, param, transaction, CommandTimeout, commandType);
+                    if (dbResult != 0)
+                    {
+                        result.Value = dbResult;
+                    }
+                    else
+                    {
+                        result.AddError("Received non-zero result from Execute procedure:\r\n {0}", sql);
+                    }
+                }
+                catch (SqlException sqlException)
+                {
+                    result.AddError("Error executing database statement {0}", sqlException.Message);
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+            }
+
+            return result;
+        }
     }
 }

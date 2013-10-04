@@ -1,10 +1,16 @@
-﻿@model dynamic
+﻿@model MDPOSDemo.UI.Models.MerchantInfoModel
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+
 <div id="mainApp">
+<div>
+    <input type="button" id="btnSetup" value="Setup"/>
+    
+    </div>
     <div id="container">
         <div class="top">
             <div>
@@ -20,9 +26,141 @@
         <div class="bottom">
             <div>
                 @Html.Partial("POSResult")
-
             </div>
-
         </div>
     </div>
+    <div>
+        <input type="hidden" id="configurationId" />
+    </div>
 </div>
+<script type="text/javascript">
+    (function tslController() {
+        var isSetupSuccessful = false;
+        var isStoreConfigSuccessful = false;
+        var configurationId = null;
+        
+        var merchantConfigRequest = {
+            "merchantName": "@Model.name",
+            "merchantKey": "@Model.merchantKey",
+            "configurationId" : "@Model.configurationId"
+            };
+
+        $(document).ready(function() {
+            bindControls();
+            bindChargeButton();
+            bindRefundButton();
+        }());
+        
+
+        function bindControls() {
+            $('#btnSetup').click(function() {
+                runSetup(merchantConfigRequest);
+            });
+        }
+
+        function storeConfigResult() {
+            $.ajax('/POSApp/StoreConfigurationId', 
+                    { 
+                        data: {"configId": configurationId},
+                    }
+                ).done(storeConfigResultDone);
+        }
+
+        function buildChargeTransactionFromFieldElements() {
+            var amount = $("#Charge_Amount").val();
+
+            var chargeTransaction = {
+                merchantKey: "@Model.name",
+                merchantName: "@Model.merchantKey",
+                transactionType: "CreditSale",
+                transFields: {
+                    amountTotal: amount
+                },
+                configurationId: configurationId
+            };
+
+            return chargeTransaction;
+        }
+
+        function buildRefundTransactionFromFieldElements() {
+            var amount = $("#Refund_Amount").val();
+
+            var chargeTransaction = {
+                merchantKey: "@Model.name",
+                merchantName: "@Model.merchantKey",
+                transactionType: "CreditSale",
+                configurationId: configurationId,
+                transFields: {
+                    amountTotal: amount
+                },
+                
+            };
+
+            return chargeTransaction;
+        }
+
+        function bindChargeButton() {
+            $('#btnCharge').click(function() {
+                var transaction = buildChargeTransactionFromFieldElements();
+                processTransaction(transaction);
+            });
+        }
+        
+        function bindRefundButton() {
+            $('#btnRefund').click(function() {
+                var transaction = buildRefundTransactionFromFieldElements();
+                processTransaction(transaction);
+            });
+        }
+
+        function storeConfigResultDone(data) {
+            isStoreConfigSuccessful = (data.success == 'true');
+            if (isStoreConfigSuccessful) $("#configurationId").val(configurationId);
+        }
+
+        function runSetup(request) {
+            EasyIntegrator.runSetup(request)
+                .success(setupSuccess)
+                .error(setupError);
+        }
+
+        function setupSuccess(incomingId) {
+            configurationId = incomingId;
+            storeConfigResult();
+            isSetupSuccessful = true;
+            $("#btnSetup").hide();
+        }
+        
+        function setupError() {
+            alert(EasyIntegrator.errorMessage);
+            isSetupSuccessful = false;
+        }
+
+        function processTransaction(transaction) {
+            EasyIntegrator.processTransaction(transaction)
+                .success(processTransactionSuccess)
+                .error(processTransactionError)
+                .done(processTransactionDone);
+        }
+        
+        function processTransactionSuccess(resultsData) {
+            var transactionId = resultsData.uniqueTransId;
+            displayTransactionResults(resultsData);
+        }
+        
+        function processTransactionError(transactionError) {
+            alert(transactionError);
+        }
+        
+        function processTransactionDone() {
+            
+        }
+        
+        function displayTransactionResults(data) {
+            $("#Result_AmountProcessed").val(data.amountTotal);
+            $("#Result_TransactionID").val(data.uniqueTransId);
+            $("#Result_Message").val(data.statusMessage);
+            $("#Result_Status").val(data.statusCode);
+        }
+    }());
+</script>

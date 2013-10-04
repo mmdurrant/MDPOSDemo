@@ -105,6 +105,8 @@
     </Compile>
     <Compile Include="Models\ChargeModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
+    <Compile Include="Models\LoginResultModel.cs" />
+    <Compile Include="Models\MerchantInfoModel.cs" />
     <Compile Include="Models\ResultModel.cs" />
     <Compile Include="Models\RefundModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

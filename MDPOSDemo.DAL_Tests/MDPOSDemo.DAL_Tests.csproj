@@ -53,6 +53,7 @@
     <Compile Include="DataBase_Tests.cs" />
     <Compile Include="Extenders\LoginExtender_Tests.cs" />
     <Compile Include="LoginData_Tests.cs" />
+    <Compile Include="MerchantData_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

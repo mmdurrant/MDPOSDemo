@@ -25,11 +25,11 @@ namespace MDPOSDemo.UI.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            var userToken = Session["UserSession"] as UserSession;
+            var userSession = Session["UserSession"] as UserSession;
 
-            if (userToken != null)
+            if (userSession != null)
             {
-                var loginRequest = userToken.AsLoginRequest();
+                var loginRequest = userSession.AsLoginRequest();
                 var loginResult = AuthenticateUser(loginRequest);
 
                 if (!loginResult.IsValid)
@@ -37,13 +37,14 @@ namespace MDPOSDemo.UI.Controllers
                     return View("Login", new LoginRequestModel() {Errors = loginResult.Errors});
                 }
 
-                return RedirectToAction("Index", "POSApp");
+                return RedirectToAction("Index", "POSApp", loginResult);
             }
             else
             {
                 return View("Login", new LoginRequestModel());
             }
         }
+
 
         // Login
         public ActionResult Login(LoginRequestModel model)
