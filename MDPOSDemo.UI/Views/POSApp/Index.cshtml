@@ -1,5 +1,4 @@
 ﻿@model dynamic
-
 @{
     ViewBag.Title = "title";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,16 +6,23 @@
 
 <div id="mainApp">
     <div id="container">
-        <div id="top">
-            <div id="topLeft">
-                
+        <div class="top">
+            <div>
+                <span class="titleHeader">Point of Sale</span>
             </div>
-            <div id="topRight">
-                
-            </div>
+            <span class="topLeft">
+                @Html.Partial("POSCharge")
+            </span>
+            <span class="topRight">
+                @Html.Partial("POSRefund")
+            </span>
         </div>
-        <div id="bottom">
-            
+        <div class="bottom">
+            <div>
+                @Html.Partial("POSResult")
+
+            </div>
+
         </div>
     </div>
 </div>
